@@ -19,9 +19,18 @@ _STATUS=$(git status -s)
 if [ -n "${_STATUS}" ]
 then
   git add -A
-  date=$(date -u)
+
+  _DATE=$(date -u)
+
+  if ${INPUT_SHA}
+  then
+    _SHA=" ${GITHUB_SHA}"
+  else
+    _SHA=''
+  fi
+
   echo 'Start to commit and push.'
-  git commit -m "deploy: 🤖 ${date} ${GITHUB_SHA}"
+  git commit -m "deploy: 🤖 ${_DATE}${_SHA}"
   git push
 else
   echo 'There are no change, exit.'

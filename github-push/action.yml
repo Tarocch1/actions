@@ -18,6 +18,10 @@ inputs:
   directory:
     description: 'Directory to push.'
     required: true
+  sha:
+    description: 'Whether to add sha at the end of commit.'
+    required: false
+    default: true
 
 runs:
   using: 'composite'
@@ -34,6 +38,7 @@ runs:
       run: ${{ github.action_path }}/push.sh
       env:
         INPUT_DIRECTORY: ${{ inputs.directory }}
+        INPUT_SHA: ${{ inputs.sha }}
     - name: Clean
       shell: bash
       run: ${{ github.action_path }}/clean.sh
