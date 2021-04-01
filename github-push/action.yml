@@ -1,0 +1,38 @@
+name: 'GitHub Push'
+description: 'Push a directory to github.'
+author: 'Tarocch1'
+
+inputs:
+  github_token:
+    description: 'Token for the repo.'
+    required: true
+  repository:
+    description: 'Repository name to push.'
+    default: ''
+    required: false
+  branch:
+    description: 'Destination branch to push.'
+    required: false
+    default: ''
+  directory:
+    description: 'Directory to push.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Clone
+      shell: bash
+      run: ${{ github.action_path }}/clone.sh
+      env:
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_BRANCH: ${{ inputs.branch }}
+    - name: Push
+      shell: bash
+      run: ${{ github.action_path }}/push.sh
+      env:
+        INPUT_DIRECTORY: ${{ inputs.directory }}
+    - name: Clean
+      shell: bash
+      run: ${{ github.action_path }}/clean.sh
