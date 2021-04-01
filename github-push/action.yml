@@ -3,13 +3,14 @@ description: 'Push a directory to github.'
 author: 'Tarocch1'
 
 inputs:
-  github_token:
+  token:
     description: 'Token for the repo.'
-    required: true
+    required: false
+    default: ${{ github.token }}
   repository:
     description: 'Repository name to push.'
-    default: ''
     required: false
+    default: ${{ github.repository }}
   branch:
     description: 'Destination branch to push.'
     required: false
@@ -25,7 +26,7 @@ runs:
       shell: bash
       run: ${{ github.action_path }}/clone.sh
       env:
-        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_TOKEN: ${{ inputs.token }}
         INPUT_REPOSITORY: ${{ inputs.repository }}
         INPUT_BRANCH: ${{ inputs.branch }}
     - name: Push
