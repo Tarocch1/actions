@@ -20,6 +20,9 @@ if [ -n "${_STATUS}" ]
 then
   git add -A
   date=$(date -u)
+  echo 'Start to commit and push.'
   git commit -m "deploy: 🤖 ${date} ${GITHUB_SHA}"
   git push
+else
+  echo 'There are no change, exit.'
 fi
