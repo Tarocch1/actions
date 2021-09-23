@@ -1,5 +1,6 @@
 {
   "conventionalCommits.scopes": [
-    "GitHub Push"
+    "GitHub Push",
+    "ossutil"
   ]
 }
