@@ -1,0 +1,30 @@
+name: 'ossutil'
+description: 'Use aliyun ossutil.'
+author: 'Tarocch1'
+
+inputs:
+  keyid:
+    description: 'Aliyun keyID.'
+    required: true
+  secret:
+    description: 'Aliyun secret.'
+    required: true
+  region:
+    description: 'Aliyun region.'
+    required: false
+    default: oss-cn-hongkong.aliyuncs.com
+  args:
+    description: 'Args for ossutil.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: ossutil
+      shell: bash
+      run: ${{ github.action_path }}/ossutil.sh
+      env:
+        INPUT_KEYID: ${{ inputs.keyid }}
+        INPUT_SECRET: ${{ inputs.secret }}
+        INPUT_REGION: ${{ inputs.region }}
+        INPUT_ARGS: ${{ inputs.args }}
