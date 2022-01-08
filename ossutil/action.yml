@@ -20,11 +20,15 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: bin
+      shell: bash
+      run: |
+        cp ${{ github.action_path }}/ossutil64 /usr/local/bin/
+        chmod 755 /usr/local/bin/ossutil64
     - name: ossutil
       shell: bash
       run: ${{ github.action_path }}/ossutil.sh
       env:
-        PWD: ${{ github.action_path }}
         INPUT_KEYID: ${{ inputs.keyid }}
         INPUT_SECRET: ${{ inputs.secret }}
         INPUT_REGION: ${{ inputs.region }}
