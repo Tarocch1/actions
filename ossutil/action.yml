@@ -24,6 +24,7 @@ runs:
       shell: bash
       run: ${{ github.action_path }}/ossutil.sh
       env:
+        PWD: ${{ github.action_path }}
         INPUT_KEYID: ${{ inputs.keyid }}
         INPUT_SECRET: ${{ inputs.secret }}
         INPUT_REGION: ${{ inputs.region }}
