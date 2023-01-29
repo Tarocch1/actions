@@ -1,6 +1,6 @@
-#!/bin/sh -l
+#!/usr/bin/env sh
 
-set -eu
+set -e
 
 echo "$GIT_CRYPT_KEY" | base64 -d > ./git-crypt-key
 
