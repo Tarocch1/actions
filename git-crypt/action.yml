@@ -1,0 +1,7 @@
+name: 'git-crypt'
+description: 'Unlock git-crypt files.'
+author: 'Tarocch1'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
