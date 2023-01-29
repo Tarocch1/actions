@@ -8,4 +8,4 @@ RUN set -e \
   chmod 755 /opt/project/entrypoint.sh \
   apk --update add git-crypt git-lfs
 
-ENTRYPOINT ["/opt/project/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/project/entrypoint.sh"]
