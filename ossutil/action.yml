@@ -24,10 +24,7 @@ runs:
       shell: bash
       run: |
         set -e
-        curl -o /tmp/ossutil-2.1.0-linux-amd64.zip https://gosspublic.alicdn.com/ossutil/v2/2.1.0/ossutil-2.1.0-linux-amd64.zip
-        unzip -d /tmp /tmp/ossutil-2.1.0-linux-amd64.zip
-        cp /tmp/ossutil-2.1.0-linux-amd64/ossutil /usr/local/bin/
-        chmod 755 /usr/local/bin/ossutil
+        bash ${{ github.action_path }}/install.sh
     - name: ossutil
       shell: bash
       env:
