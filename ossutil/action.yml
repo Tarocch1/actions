@@ -1,24 +1,24 @@
-name: 'ossutil'
-description: 'Use aliyun ossutil.'
-author: 'Tarocch1'
+name: "ossutil"
+description: "Use aliyun ossutil."
+author: "Tarocch1"
 
 inputs:
   keyid:
-    description: 'Aliyun keyID.'
+    description: "Aliyun keyID."
     required: true
   secret:
-    description: 'Aliyun secret.'
+    description: "Aliyun secret."
     required: true
   region:
-    description: 'Aliyun region.'
+    description: "Aliyun region."
     required: false
-    default: oss-cn-hongkong.aliyuncs.com
+    default: cn-hongkong
   args:
-    description: 'Args for ossutil.'
+    description: "Args for ossutil."
     required: true
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: install
       shell: bash
