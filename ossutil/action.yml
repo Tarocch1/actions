@@ -20,15 +20,20 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: bin
+    - name: install
       shell: bash
       run: |
         set -e
-        cp ${{ github.action_path }}/ossutil64 /usr/local/bin/
-        chmod 755 /usr/local/bin/ossutil64
+        curl -o /tmp/ossutil-2.1.0-linux-amd64.zip https://gosspublic.alicdn.com/ossutil/v2/2.1.0/ossutil-2.1.0-linux-amd64.zip
+        unzip -d /tmp /tmp/ossutil-2.1.0-linux-amd64.zip
+        cp /tmp/ossutil-2.1.0-linux-amd64/ossutil /usr/local/bin/
+        chmod 755 /usr/local/bin/ossutil
     - name: ossutil
       shell: bash
+      env:
+        OSS_ACCESS_KEY_ID: ${{ inputs.keyid }}
+        OSS_ACCESS_KEY_SECRET: ${{ inputs.secret }}
+        OSS_REGION: ${{ inputs.region }}
       run: |
         set -e
-        ossutil64 config -e ${{ inputs.region }} -i ${{ inputs.keyid }} -k ${{ inputs.secret }}
-        ossutil64 ${{ inputs.args }}
+        ossutil ${{ inputs.args }}
