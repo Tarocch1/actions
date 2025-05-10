@@ -1,8 +1,10 @@
+#!/bin/bash
+
 set -e
 
 _TEMP='.temp.github-actions-push'
 
-if [ -n ${INPUT_BRANCH} ]
+if [ -n "${INPUT_BRANCH}" ]
 then
   _BRANCH_OPTION="-b ${INPUT_BRANCH}"
 else

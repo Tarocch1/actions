@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 
 _TEMP='.temp.github-actions-push'
